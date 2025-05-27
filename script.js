@@ -50,8 +50,7 @@ async function initializeChat() {
             generationConfig,
             safetySettings,
             history: [
-  { role: "user", parts: [{ text: "Responda sempre no idioma do input, de forma informal, engraçada e com um toque de sarcasmo em todas as respostas." }] }
-],
+              { role: "user", parts: [{ text: "Responda sempre no idioma do input, de forma informal, engraçada e com um toque de sarcasmo em todas as respostas." }] }],
 
         });
         addMessageToChat("E ae! Fala comigo...", 'ai');
