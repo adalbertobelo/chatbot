@@ -101,11 +101,13 @@ async function sendMessage() {
     loadingMessage.classList.add('loading');
 
     try {
-        const result = await chatSession.sendMessage(messageText);
+        const prompt = `Responda em português do Brasil, acompanhando o tom e o humor da mensagem abaixo. Se for formal, responda formal. Se for informal ou sarcástico, responda igual. Mensagem do usuário: "${messageText}"`;
+        const result = await chatSession.sendMessage(prompt);
         const response = result.response;
         const aiText = await response.text();
         chatMessages.removeChild(loadingMessage);
         addMessageToChat(aiText, 'ai');
+
     } catch (error) {
         console.error("Erro ao enviar mensagem para IA:", error);
         chatMessages.removeChild(loadingMessage);
