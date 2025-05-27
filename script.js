@@ -53,7 +53,7 @@ async function initializeChat() {
             generationConfig,
             safetySettings,
             history: [
-                { role: "user", parts: [{ text: "Responda sempre no idioma de input, se for de forma informal, seja informal, se for engraçado, use um toque de sarcasmo, se for formal, seja formal e direto." }] }
+                { role: "user", parts: [{ text: "Responda sempre no idioma de input, se for engraçado use um toque de sarcasmo, se for formal seja formal e direto." }] }
             ],
         });
         addMessageToChat("E ae! Fala comigo...", 'ai');
