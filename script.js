@@ -1,6 +1,3 @@
-na verdade n tem nodle. so json e js. vou te enviar o código js pra vc me indicar onde eu padronizo para o chat ser informal e sacrstico :
-
-
 import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } from "@google/generative-ai";
 
 const chatMessages = document.getElementById('chat-messages');
@@ -53,7 +50,7 @@ async function initializeChat() {
             generationConfig,
             safetySettings,
             history: [
-                { role: "user", parts: [{ text: "Responda sempre no idioma de input, se for engraçado use um toque de sarcasmo, se for formal seja formal e direto." }] }
+                { role: "user", parts: [{ text: "Responda sempre de acordo com o idioma utilizado e o tom da conversa. Se a interação for sarcástica, mantenha o sarcasmo. Se for formal, adote um tom formal." }] }
             ],
         });
         addMessageToChat("E ae! Fala comigo...", 'ai');
@@ -68,7 +65,7 @@ async function initializeChat() {
 function addMessageToChat(text, sender, isError = false) {
     if (!chatMessages) return;
     const messageElement = document.createElement('div');
-    messageElement.classList.add('message', ${sender}-message);
+    messageElement.classList.add('message', `${sender}-message`);
     if (isError) {
         messageElement.style.backgroundColor = '#ffdddd';
         messageElement.style.color = '#d8000c';
@@ -149,7 +146,7 @@ if (newChatButton) {
             }));
             if (messages.length > 0) {
                 const history = loadChatHistory();
-                history.push({ title: Chat ${history.length + 1}, messages });
+                history.push({ title: `Chat ${history.length + 1}`, messages });
                 saveChatHistory(history);
             }
         }
@@ -182,7 +179,7 @@ function renderChatHistory() {
     chatHistoryList.innerHTML = '';
     history.forEach((item, idx) => {
         const li = document.createElement('li');
-        li.textContent = item.title || Chat ${idx + 1};
+        li.textContent = item.title || `Chat ${idx + 1}`;
         li.addEventListener('click', () => {
             // Carregar mensagens do histórico (exemplo: sobrescreve o chat atual)
             if (window.confirm('Carregar este histórico? Isso substituirá o chat atual.')) {
