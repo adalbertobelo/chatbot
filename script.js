@@ -1,3 +1,6 @@
+na verdade n tem nodle. so json e js. vou te enviar o código js pra vc me indicar onde eu padronizo para o chat ser informal e sacrstico :
+
+
 import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } from "@google/generative-ai";
 
 const chatMessages = document.getElementById('chat-messages');
@@ -45,14 +48,14 @@ let chatSession;
 
 async function initializeChat() {
     if (API_KEY === 'YOUR_API_KEY') return;
-   /* try {
+    try {
         chatSession = model.startChat({
             generationConfig,
             safetySettings,
             history: [
-              { role: "user", parts: [{ text: "Responda sempre no idioma do input, de forma informal, engraçada e com um toque de sarcasmo em todas as respostas." }] }],
-
-        });*/
+                { role: "user", parts: [{ text: "Responda sempre no idioma de input, se for de forma informal, seja informal, se for engraçado, use um toque de sarcasmo, se for formal, seja formal e direto." }] }
+            ],
+        });
         addMessageToChat("E ae! Fala comigo...", 'ai');
     } catch (error) {
         console.error("Erro ao inicializar o chat:", error);
@@ -65,7 +68,7 @@ async function initializeChat() {
 function addMessageToChat(text, sender, isError = false) {
     if (!chatMessages) return;
     const messageElement = document.createElement('div');
-    messageElement.classList.add('message', `${sender}-message`);
+    messageElement.classList.add('message', ${sender}-message);
     if (isError) {
         messageElement.style.backgroundColor = '#ffdddd';
         messageElement.style.color = '#d8000c';
@@ -101,13 +104,11 @@ async function sendMessage() {
     loadingMessage.classList.add('loading');
 
     try {
-        const prompt = `Responda em português do Brasil, acompanhando o tom e o humor da mensagem abaixo. Se for formal, responda formal. Se for informal ou sarcástico, responda igual. Mensagem do usuário: "${messageText}"`;
-        const result = await chatSession.sendMessage(prompt);
+        const result = await chatSession.sendMessage(messageText);
         const response = result.response;
         const aiText = await response.text();
         chatMessages.removeChild(loadingMessage);
         addMessageToChat(aiText, 'ai');
-
     } catch (error) {
         console.error("Erro ao enviar mensagem para IA:", error);
         chatMessages.removeChild(loadingMessage);
@@ -148,7 +149,7 @@ if (newChatButton) {
             }));
             if (messages.length > 0) {
                 const history = loadChatHistory();
-                history.push({ title: `Chat ${history.length + 1}`, messages });
+                history.push({ title: Chat ${history.length + 1}, messages });
                 saveChatHistory(history);
             }
         }
@@ -181,7 +182,7 @@ function renderChatHistory() {
     chatHistoryList.innerHTML = '';
     history.forEach((item, idx) => {
         const li = document.createElement('li');
-        li.textContent = item.title || `Chat ${idx + 1}`;
+        li.textContent = item.title || Chat ${idx + 1};
         li.addEventListener('click', () => {
             // Carregar mensagens do histórico (exemplo: sobrescreve o chat atual)
             if (window.confirm('Carregar este histórico? Isso substituirá o chat atual.')) {
